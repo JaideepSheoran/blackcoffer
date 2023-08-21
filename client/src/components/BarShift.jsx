@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Chart as ChartJs,
     BarElement,
@@ -7,7 +7,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js/auto";
-import { Bar, Doughnut, Line, Radar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import './BarChart.css'
   
 ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
@@ -22,23 +22,6 @@ const BarShift = ({res}) => {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
-    }
-
-    const filterData = () => {
-        const colors = res.map(res => getRandomColor());
-
-        const data = {
-            labels : ['Intensity', 'Likelihood', 'Relevance'],
-            datasets : res.map((res, i) => {
-                const doc =  {
-                    _id : i + 6,
-                    label : ((res._id.sector == "") ? "General" : res._id.sector),
-                    data : [res.total_intensity, res.total_likelihood, res.total_relevance],
-                    backgroundColor : colors[i],
-                }
-                return doc;
-            })
-          }
     }
 
   const [data, setData] = useState(

@@ -22,9 +22,33 @@ def get_chart_data():
     newdata = DATABASE.aggregate([{
         "$group" : {
             "_id" : {"sector" : "$sector"},
-            "total_intensity" : {"$sum" : "$intensity"},
-            "total_likelihood" : {"$sum" : "$likelihood"},
-            "total_relevance" : {"$sum" : "$relevance"}
+            "total_intensity" : {"$avg" : "$intensity"},
+            "total_likelihood" : {"$avg" : "$likelihood"},
+            "total_relevance" : {"$avg" : "$relevance"}
+        }
+    }])
+
+    chart_data = []
+
+    for doc in newdata:
+        newDoc = jsonable_encoder(doc, exclude_none=True)
+        chart_data.append(newDoc)
+
+
+    return make_response(chart_data, 200)
+
+
+
+@app.route("/api/country_sector")
+def get_country_sector_data():
+    
+    newdata = DATABASE.aggregate([{
+        "$group" : {
+            "_id" : {"country" : "$country" ,"sector" : "$sector"},
+            "intensity" : {"$avg" : "$intensity"},
+            "likelihood" : {"$avg" : "$likelihood"},
+            "relevance" : {"$avg" : "$relevance"},
+            "impact" : {"$avg" : "$impact"}
         }
     }])
 

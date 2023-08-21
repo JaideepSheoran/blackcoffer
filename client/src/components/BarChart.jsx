@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Chart as ChartJs,
     BarElement,
@@ -7,7 +7,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js/auto";
-import { Bar, Doughnut, Line, Radar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import './BarChart.css'
   
 ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
@@ -17,7 +17,7 @@ const BarChart = ({res}) => {
 
   const [data, setData] = useState(
 	{
-		labels : res.map((res) => (res._id.sector == '') ? 'General' : res._id.sector),
+		labels : res.map((res) => (res._id.sector === '') ? 'General' : res._id.sector),
 		datasets : [
 		  {
 			  id : 1,

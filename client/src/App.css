@@ -1,3 +1,7 @@
+body {
+    background-color: black;
+}
+
 .main {
     background-color: black;
 }
@@ -5,11 +9,50 @@
 .navbar {
     position: sticky;
     top: 0;
-    border: 1px solid black;
     margin: 0;
-    text-align: center;
-    padding: 15px 0px;
     background-color: black;
     color: white;
     font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+}
+
+.navbar h2 {
+    margin: 0;
+}
+
+.navbar h2 a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar {
+    padding: 10px;
+}
+
+.navbar-links a:hover {
+    background-position: right center;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+
+.navbar .navbar-links a {
+    margin: 0px 5px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-weight: bold;
+    background-size: 200% auto;
+    transition: 0.5s;
+    font-size: 16px;
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
 }
