@@ -14,7 +14,7 @@ ChartJs.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const BarChart = ({res}) => {
 
-    const [country, setCountry] = useState('');
+    const [country, setCountry] = useState('United States of America');
     const [data, setData] = useState();
 
     function getRandomColor() {
@@ -46,7 +46,7 @@ const BarChart = ({res}) => {
 
   return (
     <div className='country-main'>
-        <select onChange={(e) => {setCountry(e.target.value)}} name="country" id="country">
+        <select value={country} onChange={(e) => {setCountry(e.target.value)}} name="country" id="country">
             {
                 [...new Set(res.map(ele => ele._id.country))].map(doc => {
                     return <option value={doc}>{doc}</option>
